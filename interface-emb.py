@@ -6,9 +6,10 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import math
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 import matplotlib.dates as mdates
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
+from collections import deque
 
 class SerialThread(QtCore.QThread):
     data_received = QtCore.pyqtSignal(str)
@@ -66,7 +67,7 @@ class MainWindow(QMainWindow):
         self.serial_thread.data_received.connect(self.update_data)
         self.serial_thread.start()
         
-        self.data_sets = []
+        self.data_sets = deque(maxlen=60)  # Keep the last 60 data points (10 seconds at 6 data points per second)
         self.update_plot()
 
     def update_data(self, data):
@@ -83,26 +84,20 @@ class MainWindow(QMainWindow):
     def update_plot(self):
         self.axes.clear()
         
+        x_values = []
+        y_values = []
+        
         if self.data_sets:
-            # Get distinct times and corresponding data values
-            times = [x[0] for x in self.data_sets]
-            unique_times = np.unique(times)
+            for timestamp, data in self.data_sets:
+                x_values.append(timestamp)
+                y_values.extend(data)
             
-            # Resample data to get 5 distinct times
-            if len(unique_times) > 5:
-                resampled_times = np.linspace(min(unique_times), max(unique_times), 5)
-            else:
-                resampled_times = unique_times
+            # Plot all data
+            self.axes.plot(x_values, y_values, marker='o')
             
-            # Get corresponding data for the resampled times
-            resampled_data = [next((data for (time, data) in self.data_sets if time == t), [0]) for t in resampled_times]
-            
-            for i, (x_values, data) in enumerate(zip(resampled_times, resampled_data)):
-                self.axes.plot([x_values] * len(data), data, marker='o')
-            
+            # Set ylabel, title, and yticks
             self.axes.set_ylabel('Y Value')
             self.axes.set_title('Input Plot')
-            
             y_ticks = np.arange(0, 9, 1)
             self.axes.set_yticks(y_ticks)
             y_tick_labels = [str(int(2**y)) for y in y_ticks]
@@ -111,18 +106,16 @@ class MainWindow(QMainWindow):
             # Format x-axis to display only time
             self.axes.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
             
-            # Set x-axis limits based on the range of time data
-            min_time = min(resampled_times)
-            max_time = max(resampled_times)
+            # Set x-axis limits to show the last 10 seconds of data
+            current_time = datetime.now()
+            min_time = current_time - timedelta(seconds=10)
+            max_time = current_time
             self.axes.set_xlim(min_time, max_time)
-            
-            # Set only 5 ticks on the x-axis
-            self.axes.xaxis.set_major_locator(mdates.MinuteLocator(interval=2))
         
         else:
-            # If no data is received, append a data point with a value of 0
-            self.data_sets.append((datetime.now(), [0]))
-    
+            # If no data is received, plot a single point at (0, 0)
+            self.axes.plot(0, 0, marker='o')
+        
         self.canvas.draw()
 
 if __name__ == '__main__':
