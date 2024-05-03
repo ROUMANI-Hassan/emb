@@ -9,6 +9,7 @@ import numpy as np
 from datetime import datetime
 import matplotlib.dates as mdates
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
+import sqlite3
 
 class SerialThread(QtCore.QThread):
     data_received = QtCore.pyqtSignal(str)
@@ -46,6 +47,7 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         self.label_recvd = QLabel('Message Reçu :')
         self.line_recvd = QLineEdit()
+        self.line_recvd.setReadOnly(True)
         
         self.setCentralWidget(widget)
         layout = QVBoxLayout(widget)
@@ -70,10 +72,43 @@ class MainWindow(QMainWindow):
         self.update_plot()
 
     def update_data(self, data):
-        data_list = [math.log2(int(x.strip())) for x in data.split(',')]
+        data_list = [int(x.strip()) for x in data.split(',')]
         self.plot_data(data_list)
         self.line_recvd.clear()
-        self.line_recvd.setText(data)
+        self.line_recvd.setText(','.join(map(str, data_list)))
+        
+        # Determine state based on received data
+        state_dict = {
+            1: 'Up',
+            2: 'Down',
+            4: 'Right',
+            8: 'Left',
+            16: 'Forward',
+            32: 'Backward',
+            64: 'Clockwise',
+            128: 'Counter Clockwise',
+            256: 'Wave'
+        }
+        state = state_dict.get(data_list[0], 'Unknown')
+        
+        # Connect to the database
+        conn = sqlite3.connect('gesture_data.db')
+        cursor = conn.cursor()
+
+        # Check if the table exists, if not, create it
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='gesture_data'")
+        table_exists = cursor.fetchone()
+        if not table_exists:
+            cursor.execute('''CREATE TABLE gesture_data
+                          (data INTEGER, state TEXT, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
+            conn.commit()
+
+        # Insert data and state into the SQLite database
+        cursor.execute("INSERT INTO gesture_data (data, state) VALUES (?, ?)", (data_list[0], state))
+        conn.commit()
+    
+        # Close the connection
+        conn.close()
 
     def plot_data(self, data):
         current_time = datetime.now()
@@ -88,16 +123,22 @@ class MainWindow(QMainWindow):
             times = [x[0] for x in self.data_sets]
             unique_times = np.unique(times)
             
+            # Convert datetime objects to timestamps
+            timestamps = [time.timestamp() for time in unique_times]
+            
             # Resample data to get 5 distinct times
             if len(unique_times) > 5:
-                resampled_times = np.linspace(min(unique_times), max(unique_times), 5)
+                resampled_times = np.linspace(min(timestamps), max(timestamps), 5)
             else:
-                resampled_times = unique_times
+                resampled_times = timestamps
+            
+            # Convert timestamps back to datetime objects
+            resampled_times_dt = [datetime.fromtimestamp(ts) for ts in resampled_times]
             
             # Get corresponding data for the resampled times
-            resampled_data = [next((data for (time, data) in self.data_sets if time == t), [0]) for t in resampled_times]
+            resampled_data = [next((data for (time, data) in self.data_sets if time == t), [0]) for t in resampled_times_dt]
             
-            for i, (x_values, data) in enumerate(zip(resampled_times, resampled_data)):
+            for i, (x_values, data) in enumerate(zip(resampled_times_dt, resampled_data)):
                 self.axes.plot([x_values] * len(data), data, marker='o')
             
             self.axes.set_ylabel('Y Value')
@@ -112,17 +153,17 @@ class MainWindow(QMainWindow):
             self.axes.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
             
             # Set x-axis limits based on the range of time data
-            min_time = min(resampled_times)
-            max_time = max(resampled_times)
+            min_time = min(resampled_times_dt)
+            max_time = max(resampled_times_dt)
             self.axes.set_xlim(min_time, max_time)
             
             # Set only 5 ticks on the x-axis
             self.axes.xaxis.set_major_locator(mdates.MinuteLocator(interval=2))
-        
+
         else:
             # If no data is received, append a data point with a value of 0
             self.data_sets.append((datetime.now(), [0]))
-    
+
         self.canvas.draw()
 
 if __name__ == '__main__':
