@@ -1,0 +1,17 @@
+2023-11-17 08:03:18,239 [INFO] Activator:176 - 
+
+
+2023-11-17 08:03:18,242 [INFO] Activator:177 - !SESSION log4j initialized
+2023-11-17 08:03:21,795 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-11-17 08:03:42,739 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-11-17 08:03:42,740 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-11-17 08:03:42,740 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-11-17 10:59:37,221 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to UnregisterClient: GDBus.Error:org.xfce.SessionManager.Error.General: Client with id of '/org/xfce/SessionClients/org_eclipse_swt_Application' was not found
+2023-11-17 15:13:29,556 [INFO] Activator:176 - 
+
+
+2023-11-17 15:13:29,558 [INFO] Activator:177 - !SESSION log4j initialized
+2023-11-17 15:13:33,684 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-11-17 15:13:54,806 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-11-17 15:13:54,808 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-11-17 15:13:54,809 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
