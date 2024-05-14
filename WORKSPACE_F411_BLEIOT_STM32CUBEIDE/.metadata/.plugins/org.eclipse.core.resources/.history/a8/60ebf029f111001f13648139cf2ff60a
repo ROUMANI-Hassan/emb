@@ -1,0 +1,296 @@
+#include "main.h"
+#include "sensor_service.h"
+#include "drv_i2c.h"
+#include "hts221.h"
+#include "lps25hb.h"
+#include "lsm6ds0.h"
+#include "hci_tl.h"
+#include "sensor_service.h"
+#include "role_type.h"
+#include "bluenrg_utils.h"
+#include "bluenrg_gatt_server.h"
+#include "bluenrg_gap_aci.h"
+#include "bluenrg_gatt_aci.h"
+#include "bluenrg_hal_aci.h"
+#include "util.h"
+#include "paj7620u2.h"
+void SystemClock_Config(void);
+
+
+extern volatile int     connected;
+extern volatile uint8_t set_connectable;
+extern volatile uint8_t notification_enabled;
+
+volatile uint8_t user_button_init_state = 1;
+volatile uint8_t user_button_pressed = 0;
+
+#define SERVER_ROLE
+#define BDADDR_SIZE 6
+
+uint8_t bnrg_expansion_board = IDB04A1; /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
+BLE_RoleTypeDef BLE_Role = SERVER;
+
+void MX_BlueNRG_MS_Init(void);
+
+extern int pressure_subscription ;
+extern int temperature_subscription ;
+
+//===================================================================
+//						>>> MAIN <<<
+//===================================================================
+int main(void)
+{
+	int i;
+
+  HAL_Init();
+  SystemClock_Config();
+  i2c1_Init();
+  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_EXTI);
+  BSP_LED_Init(LED2);
+
+  //BSP_LED_On(LED2);
+  //BSP_LED_Off(LED2);
+
+
+
+  BSP_COM_Init(COM1);
+
+  user_button_init_state = BSP_PB_GetState(BUTTON_KEY);
+
+  MX_BlueNRG_MS_Init();
+  ./bleiotEnib.py", line 214, in <module>
+      bleiot = Bleiot(args.mac_address)
+    File "./bleiotEnib.py", line 177, in __init__
+      Peripheral.__init__(self, addr, addrType=ADDR_TYPE_PUBLIC)
+    File "/usr/local/lib/python3.8/site-packages/bluepy/btle.py", line 391, in __init__
+      self._connect(deviceAddr, addrType, iface)
+    File "/usr/local/lib/python3.8/site-packages/bluepy/btle.py", line 439, in _connect
+      raise BTLEDisconnectError("Failed to connect to peripheral %s, addr type: %s" % (addr, addrType), rsp)
+  bluepy.btle.BTLEDisconnectError: Failed to co
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //				TEST CAPTEURS
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  i = lsm6ds0_whoAmI();
+
+  lsm6ds0_setup(LSM6DS0_G_ODR_119HZ, LSM6DS0_G_FS_2000,  LSM6DS0_XL_ODR_119HZ, LSM6DS0_XL_FS_2G);
+
+  /*
+  int16_t X, Y, Z;
+
+  while(1)
+  {
+	//X = lsm6ds0_gyro_getAxesX();
+	//Y = lsm6ds0_gyro_getAxesY();
+	//Z = lsm6ds0_gyro_getAxesZ();
+
+	X = lsm6ds0_acc_getAxesX();
+	Y = lsm6ds0_acc_getAxesY();
+	Z = lsm6ds0_acc_getAxesZ();
+
+	term_printf("%d %d %d \n\r", X, Y, Z);
+	HAL_Delay(20);
+  }
+
+*/
+  //-------------------------------------------------------------------
+
+  i = lps22hb_whoAmI();
+  lps22hb_setup();
+  //--------------------------------------------------------------------
+
+  hts221_activate();
+  i = hts221_whoAmI();
+  hts221_storeCalibration();
+
+ /* while(1)
+  {
+	  pressure =   lps25hb_getPressure();
+	  temp_lps25hb = lps25hb_getTemperature();
+
+	  tp = hts221_getTemperature();
+	  humidity = hts221_getHumidity(); //humidity = hts221_getHumidity();
+
+	  HAL_Delay(500);
+	  term_printf("humidity = %d temperature = %d pressure = %d temp_lps25hb= %d \n\r", (int) humidity, (int)tp, (int) pressure, (int) temp_lps25hb);
+  }*/
+
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  while (1)
+  {
+	  if (set_connectable)
+	  {
+	    Make_Connection();
+	    set_connectable = FALSE;
+	    user_button_init_state = BSP_PB_GetState(BUTTON_KEY);
+	  }
+
+	  if(connected && pressure_subscription && temperature_subscription )
+	  {
+
+		  SendEnvironmentalData();
+		  HAL_Delay(100);
+	  }
+
+	  hci_user_evt_proc();
+  }
+}
+//=====================================================================================
+//			 Send Environmetal Data (Temperature/Pressure/Humidity) to BLE
+//=====================================================================================
+void SendEnvironmentalData(void)
+{
+    static float pres_value, temp_value;
+    int32_t PressToSend=0;
+    int16_t TempToSend=0;
+    int32_t decPart, intPart;
+
+    lps22hb_getPressure(&pres_value);
+    MCR_BLUEMS_F2I_2D(pres_value, intPart, decPart);
+   	PressToSend=intPart*100+decPart;
+
+   	hts221_getTemperature(&temp_value);
+   	MCR_BLUEMS_F2I_1D(temp_value, intPart, decPart);
+   	TempToSend = intPart*10+decPart;
+
+   	Environmental_Update(PressToSend, TempToSend);
+}
+//===========================================================================
+void MX_BlueNRG_MS_Init(void)
+{
+
+  uint8_t SERVER_BDADDR[] = {0xab, 0x00, 0x00, 0xE1, 0x80, 0x02};
+  uint8_t bdaddr[BDADDR_SIZE];
+  uint16_t service_handle, dev_name_char_handle, appearance_char_handle;
+
+  uint8_t  hwVersion;
+  uint16_t fwVersion;
+  int ret;
+
+  hci_init(user_notify, NULL);
+
+  /* get the BlueNRG HW and FW versions */
+  getBlueNRGVersion(&hwVersion, &fwVersion);
+
+  /*
+   * Reset BlueNRG again otherwise we won't
+   * be able to change its MAC address.
+   * aci_hal_write_config_data() must be the first
+   * command after reset otherwise it will fail.
+   */
+  hci_reset();
+
+  HAL_Delay(100);
+
+  printf("HWver %d, FWver %d\n\r", hwVersion, fwVersion);
+
+  if (hwVersion > 0x30) { /* X-NUCLEO-IDB05A1 expansion board is used */
+    bnrg_expansion_board = IDB05A1;
+  }
+
+  BLUENRG_memcpy(bdaddr, SERVER_BDADDR, sizeof(SERVER_BDADDR));
+
+  ret = aci_hal_write_config_data(CONFIG_DATA_PUBADDR_OFFSET,
+                                  CONFIG_DATA_PUBADDR_LEN,
+                                  bdaddr);
+  	  	  	  	  	  if (ret) {    printf("Setting BD_ADDR failed 0x%02x.\n\r", ret);  }
+
+  ret = aci_gatt_init();
+  	  	  	  	  	  if (ret) {    printf("GATT_Init failed.\n\r");  }
+
+
+  ret = aci_gap_init_IDB05A1(GAP_PERIPHERAL_ROLE_IDB05A1, 0, 0x07, &service_handle, &dev_name_char_handle, &appearance_char_handle);
+
+  	  	  	  	  	  if (ret != BLE_STATUS_SUCCESS) {	printf("GAP_Init failed.\n\r");}
+
+  ret = aci_gap_set_auth_requirement(MITM_PROTECTION_REQUIRED,
+                                     OOB_AUTH_DATA_ABSENT,
+                                     NULL,
+                                     7,
+                                     16,
+                                     USE_FIXED_PIN_FOR_PAIRING,
+                                     123456,
+                                     BONDING);
+  	  	  	  	  	  if (ret == BLE_STATUS_SUCCESS) { printf("BLE Stack Initialized.\n\r"); }
+
+
+    printf("SERVER: BLE Stack Initialized\n\r");
+
+    ret = Add_HWServW2ST_Service();		// HARDWARE SERVICE
+						if (ret == BLE_STATUS_SUCCESS)
+						  printf("Service added successfully.\n\r");
+						else
+						  printf("Error while adding service.\n\r");
+
+  /* Set output power level */
+  ret = aci_hal_set_tx_power_level(1,4);
+
+}
+//===================================================================
+//				CALLBACK FUNCTIONS
+//===================================================================
+void BSP_PB_Callback(Button_TypeDef Button)
+{
+  user_button_pressed = 1;
+}
+//===================================================================
+//				SYS CLOCK CONFIG
+//===================================================================
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 16;
+  RCC_OscInitStruct.PLL.PLLN = 336;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+//===================================================================
+void Error_Handler(void)
+{
+}
+//===================================================================
+#ifdef  USE_FULL_ASSERT
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t *file, uint32_t line)
+{ 
+  /* USER CODE BEGIN 6 */
+  /* User can add his own implementation to report the file name and line number,
+     tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+  /* USER CODE END 6 */
+}
+#endif /* USE_FULL_ASSERT */
+
+//===================================================================

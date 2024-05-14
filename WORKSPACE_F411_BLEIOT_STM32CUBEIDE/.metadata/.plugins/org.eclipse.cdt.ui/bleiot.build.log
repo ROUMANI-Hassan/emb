@@ -1,0 +1,6 @@
+15:49:20 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+
+15:49:21 Build Finished. 0 errors, 0 warnings. (took 182ms)
+

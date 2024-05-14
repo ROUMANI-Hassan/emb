@@ -1,0 +1,927 @@
+15:04:35 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:168:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  168 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:07:23 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:166:22: warning: unused variable 'intPart' [-Wunused-variable]
+  166 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'decPart' [-Wunused-variable]
+  166 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:163:30: warning: unused variable 'temp_value' [-Wunused-variable]
+  163 |     static float pres_value, temp_value;
+      |                              ^~~~~~~~~~
+Src/main.c:163:18: warning: unused variable 'pres_value' [-Wunused-variable]
+  163 |     static float pres_value, temp_value;
+      |                  ^~~~~~~~~~
+At top level:
+Src/main.c:163:18: warning: 'pres_value' defined but not used [-Wunused-variable]
+Src/main.c:163:30: warning: 'temp_value' defined but not used [-Wunused-variable]
+  163 |     static float pres_value, temp_value;
+      |                              ^~~~~~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:07:32 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:08:00 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:168:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  168 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:09:20 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:168:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  168 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:10:18 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:168:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  168 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:166:13: warning: variable 'decPart' set but not used [-Wunused-but-set-variable]
+  166 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:13:16 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:13: warning: variable 'decPart' set but not used [-Wunused-but-set-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:13:22 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:15:17 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:13: warning: variable 'decPart' set but not used [-Wunused-but-set-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:15:31 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:16:39 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:13: warning: variable 'decPart' set but not used [-Wunused-but-set-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:16:48 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:23:03 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:64:2: error: 'buff' undeclared (first use in this function)
+   64 |  buff[0]=0x44;
+      |  ^~~~
+Src/lps22hb.c:64:2: note: each undeclared identifier is reported only once for each function it appears in
+Src/lps22hb.c:65:30: error: 'hi2c1' undeclared (first use in this function)
+   65 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |                              ^~~~~
+Src/lps22hb.c:65:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   65 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:66:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   66 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:67:2: error: 's' undeclared (first use in this function)
+   67 |  s = buff[0]<<8;
+      |  ^
+Src/lps22hb.c:69:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   69 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:70:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   70 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73 , buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:72:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+   72 |  sprintf(str,"%d",s);
+      |  ^~~~~~~
+Src/lps22hb.c:72:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+Src/lps22hb.c:2:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+    1 | #include "lps22hb.h"
+  +++ |+#include <stdio.h>
+    2 | 
+Src/lps22hb.c:72:10: error: 'str' undeclared (first use in this function)
+   72 |  sprintf(str,"%d",s);
+      |          ^~~
+Src/lps22hb.c:74:45: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   74 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |                                             ^~~~~~
+Src/lps22hb.c:74:45: warning: incompatible implicit declaration of built-in function 'strlen'
+Src/lps22hb.c:2:1: note: include '<string.h>' or provide a declaration of 'strlen'
+    1 | #include "lps22hb.h"
+  +++ |+#include <string.h>
+    2 | 
+Src/lps22hb.c:74:2: error: too few arguments to function 'HAL_UART_Transmit'
+   74 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |  ^~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:360,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: declared here
+  696 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+Src/lps22hb.c:77:2: error: 'gesture_data' undeclared (first use in this function)
+   77 |  gesture_data = ((uint16_t)buff[0] << 8) | buff[1];
+      |  ^~~~~~~~~~~~
+make: *** [Makefile:128: template.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:23:24 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:80:2: error: 'buff' undeclared (first use in this function)
+   80 |  buff[0]=0x44;
+      |  ^~~~
+Src/lps22hb.c:80:2: note: each undeclared identifier is reported only once for each function it appears in
+Src/lps22hb.c:81:30: error: 'hi2c1' undeclared (first use in this function)
+   81 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |                              ^~~~~
+Src/lps22hb.c:81:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   81 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:82:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   82 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:83:2: error: 's' undeclared (first use in this function)
+   83 |  s = buff[0]<<8;
+      |  ^
+Src/lps22hb.c:85:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   85 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:86:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   86 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73 , buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:88:10: error: 'str' undeclared (first use in this function)
+   88 |  sprintf(str,"%d",s);
+      |          ^~~
+Src/lps22hb.c:90:2: error: too few arguments to function 'HAL_UART_Transmit'
+   90 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |  ^~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:360,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: declared here
+  696 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+Src/lps22hb.c:93:2: error: 'gesture_data' undeclared (first use in this function)
+   93 |  gesture_data = ((uint16_t)buff[0] << 8) | buff[1];
+      |  ^~~~~~~~~~~~
+make: *** [Makefile:128: template.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:24:01 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'main':
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:12: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |    int16_t gesture_data;
+      |            ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:81:2: error: 'buff' undeclared (first use in this function)
+   81 |  buff[0]=0x44;
+      |  ^~~~
+Src/lps22hb.c:81:2: note: each undeclared identifier is reported only once for each function it appears in
+Src/lps22hb.c:82:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   82 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:83:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   83 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:84:2: error: 's' undeclared (first use in this function)
+   84 |  s = buff[0]<<8;
+      |  ^
+Src/lps22hb.c:86:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   86 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:87:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   87 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73 , buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:89:10: error: 'str' undeclared (first use in this function)
+   89 |  sprintf(str,"%d",s);
+      |          ^~~
+Src/lps22hb.c:91:2: error: too few arguments to function 'HAL_UART_Transmit'
+   91 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |  ^~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:360,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: declared here
+  696 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+Src/lps22hb.c:94:2: error: 'gesture_data' undeclared (first use in this function)
+   94 |  gesture_data = ((uint16_t)buff[0] << 8) | buff[1];
+      |  ^~~~~~~~~~~~
+make: *** [Makefile:128: template.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:24:36 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:18: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |   extern int16_t gesture_data;
+      |                  ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'main':
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:18: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |   extern int16_t gesture_data;
+      |                  ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:81:2: error: 'buff' undeclared (first use in this function)
+   81 |  buff[0]=0x44;
+      |  ^~~~
+Src/lps22hb.c:81:2: note: each undeclared identifier is reported only once for each function it appears in
+Src/lps22hb.c:82:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   82 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:83:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   83 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:84:2: error: 's' undeclared (first use in this function)
+   84 |  s = buff[0]<<8;
+      |  ^
+Src/lps22hb.c:86:2: error: too many arguments to function 'HAL_I2C_Master_Transmit_IT'
+   86 |  HAL_I2C_Master_Transmit_IT(&hi2c1, 0x73, buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: declared here
+  571 | HAL_StatusTypeDef HAL_I2C_Master_Transmit_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:87:2: error: too many arguments to function 'HAL_I2C_Master_Receive_IT'
+   87 |  HAL_I2C_Master_Receive_IT(&hi2c1, 0x73 , buff, 1, 0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:312,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:572:19: note: declared here
+  572 | HAL_StatusTypeDef HAL_I2C_Master_Receive_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint8_t *pData, uint16_t Size);
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+Src/lps22hb.c:89:10: error: 'str' undeclared (first use in this function)
+   89 |  sprintf(str,"%d",s);
+      |          ^~~
+Src/lps22hb.c:91:2: error: too few arguments to function 'HAL_UART_Transmit'
+   91 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |  ^~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:360,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: declared here
+  696 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+Src/lps22hb.c:94:2: error: 'gesture_data' undeclared (first use in this function)
+   94 |  gesture_data = ((uint16_t)buff[0] << 8) | buff[1];
+      |  ^~~~~~~~~~~~
+make: *** [Makefile:128: template.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:25:27 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:21: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |      extern int16_t gesture_data;
+      |                     ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'main':
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:74:21: warning: unused variable 'gesture_data' [-Wunused-variable]
+   74 |      extern int16_t gesture_data;
+      |                     ^~~~~~~~~~~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+In file included from Src/lps22hb.c:19:
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:81:2: error: 'buff' undeclared (first use in this function)
+   81 |  buff[0]=0x44;
+      |  ^~~~
+Src/lps22hb.c:81:2: note: each undeclared identifier is reported only once for each function it appears in
+Src/lps22hb.c:84:2: error: 's' undeclared (first use in this function)
+   84 |  s = buff[0]<<8;
+      |  ^
+Src/lps22hb.c:89:10: error: 'str' undeclared (first use in this function)
+   89 |  sprintf(str,"%d",s);
+      |          ^~~
+Src/lps22hb.c:91:2: error: too few arguments to function 'HAL_UART_Transmit'
+   91 |  HAL_UART_Transmit(&huart2, (uint8_t *)str, strlen(str));
+      |  ^~~~~~~~~~~~~~~~~
+In file included from Inc/stm32f4xx_hal_conf.h:360,
+                 from Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from Inc/main.h:33,
+                 from Inc/drv_i2c.h:11,
+                 from Inc/lps22hb.h:11,
+                 from Src/lps22hb.c:1:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: declared here
+  696 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                   ^~~~~~~~~~~~~~~~~
+Src/lps22hb.c:94:2: error: 'gesture_data' undeclared (first use in this function)
+   94 |  gesture_data = ((uint16_t)buff[0] << 8) | buff[1];
+      |  ^~~~~~~~~~~~
+make: *** [Makefile:128: template.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:47:13 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+arm-none-eabi-gcc -IInc/ -IMiddlewares/ST/BlueNRG-MS/includes/ -IMiddlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/ -IMiddlewares/ST/BlueNRG-MS/utils/ -IDrivers/STM32F4xx_HAL_Driver/Inc/ -IDrivers/CMSIS/Device/ST/STM32F4xx/Include/ -IDrivers/CMSIS/Include/ -IDrivers/BSP/STM32F4xx-Nucleo/ -IDrivers/BSP/X-NUCLEO-IDB04A1 -IMiddlewares/ST/STM32_BlueNRG/SimpleBlueNRG_HCI/includes -IMiddlewares/ST/STM32_BlueNRG/Interface -IDrivers/BSP/X-NUCLEO-IDB0xA1 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -IDrivers/BSP/Components/Common -IDrivers/BSP/Components/hts221 -IDrivers/BSP/Components/lis3mdl -IDrivers/BSP/Components/lps22hb -IDrivers/BSP/Components/lps25hb -IDrivers/BSP/Components/lsm303agr -IDrivers/BSP/Components/lsm6ds0 -IDrivers/BSP/Components/lsm6ds3 -IDrivers/BSP/Components/lsm6dsl -IDrivers/BSP/Components/lsm6dsm -IDrivers/BSP/Components/stc3115 -IDrivers/BSP/X_NUCLEO_IKS01A1 -IDrivers/BSP/X_NUCLEO_IKS01A2 -DSTM32F411xE -ggdb -O0 -fcommon -D ARM_MATH_CM4 -L  -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -Wl,--gc-sections -mfpu=fpv4-sp-d16 -mfloat-abi=hard -specs=nano.specs -fsingle-precision-constant -Wall -Wextra -Warray-bounds -Wno-unused-parameter -TDevice/gcc.ld -mfloat-abi=hard -lc -lgcc -lgcov -lm -Wl,-Map=template.elf.map Middlewares/ST/BlueNRG-MS/utils/ble_list.c Middlewares/ST/BlueNRG-MS/hci/hci_le.c Middlewares/ST/BlueNRG-MS/hci/hci_tl_patterns/Basic/hci_tl.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_gatt_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_hal_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_l2cap_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_updater_aci.c Middlewares/ST/BlueNRG-MS/hci/controller/bluenrg_utils_small.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c Src/system_stm32f4xx.c Src/hci_tl_interface.c Src/main.c Src/sensor_service.c Src/stm32f4xx_hal_msp.c Src/stm32f4xx_it.c Src/stm32f4xx_nucleo.c Src/stm32f4xx_nucleo_bus.c SW4STM32/startup_stm32f411xe.s SW4STM32/syscalls.c Src/hts221.c Src/lps22hb.c Src/lsm6ds0.c Src/drv_uart.c Src/drv_i2c.c -o template.elf
+Src/main.c: In function 'main':
+Src/main.c:117:7: warning: implicit declaration of function 'lps22hb_whoAmI'; did you mean 'lps25hb_whoAmI'? [-Wimplicit-function-declaration]
+  117 |   i = lps22hb_whoAmI();
+      |       ^~~~~~~~~~~~~~
+      |       lps25hb_whoAmI
+Src/main.c:118:3: warning: implicit declaration of function 'lps22hb_setup'; did you mean 'lps25hb_setup'? [-Wimplicit-function-declaration]
+  118 |   lps22hb_setup();
+      |   ^~~~~~~~~~~~~
+      |   lps25hb_setup
+Src/main.c:81:10: warning: unused variable 'str' [-Wunused-variable]
+   81 |     char str[10];
+      |          ^~~
+Src/main.c:59:6: warning: variable 'i' set but not used [-Wunused-but-set-variable]
+   59 |  int i;
+      |      ^
+Src/main.c: In function 'SendEnvironmentalData':
+Src/main.c:169:5: warning: implicit declaration of function 'lps22hb_getPressure'; did you mean 'lps25hb_getPressure'? [-Wimplicit-function-declaration]
+  169 |     lps22hb_getPressure(&pres_value);
+      |     ^~~~~~~~~~~~~~~~~~~
+      |     lps25hb_getPressure
+Src/main.c:167:22: warning: unused variable 'intPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |                      ^~~~~~~
+Src/main.c:167:13: warning: unused variable 'decPart' [-Wunused-variable]
+  167 |     int32_t decPart, intPart;
+      |             ^~~~~~~
+Src/main.c:166:13: warning: unused variable 'TempToSend' [-Wunused-variable]
+  166 |     int16_t TempToSend=0;
+      |             ^~~~~~~~~~
+Src/main.c:165:13: warning: unused variable 'PressToSend' [-Wunused-variable]
+  165 |     int32_t PressToSend=0;
+      |             ^~~~~~~~~~~
+Src/lps22hb.c: In function 'lps22hb_getPressure':
+Src/lps22hb.c:72:4: warning: assignment to 'uint32_t' {aka 'long unsigned int'} from 'uint8_t *' {aka 'unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   72 |  s += data_l;
+      |    ^~
+Src/lps22hb.c:66:10: warning: unused variable 'data_h' [-Wunused-variable]
+   66 |  uint8_t data_h[1];
+      |          ^~~~~~
+arm-none-eabi-objcopy -O ihex template.elf   template.hex
+arm-none-eabi-objcopy -O binary template.elf template.bin
+15:48:07 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:48:55 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
+15:49:20 **** Incremental Build of configuration Debug for project bleiot ****
+make all 
+make: Nothing to be done for 'all'.
